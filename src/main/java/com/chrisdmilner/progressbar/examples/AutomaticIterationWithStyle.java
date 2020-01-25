@@ -1,16 +1,21 @@
 package com.chrisdmilner.progressbar.examples;
 
+import com.chrisdmilner.progressbar.ProgressBar;
+import com.chrisdmilner.progressbar.style.ProgressBarStyle;
+import com.chrisdmilner.progressbar.style.ProgressBarStyleBuilder;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import com.chrisdmilner.progressbar.ProgressBar;
-import com.chrisdmilner.progressbar.style.ProgressBarStyle;
-import com.chrisdmilner.progressbar.style.ProgressBarStyleBuilder;
-
-public class AutomaticIterationWithStyle {
+public class AutomaticIterationWithStyle implements Runnable {
     public static void main(String[] args) {
+        new AutomaticIterationWithStyle().run();
+    }
+
+    @Override
+    public void run() {
         int its = 100000000;
         List<Integer> data = Stream.generate(() -> 1).limit(its).collect(Collectors.toList());
         List<Integer> results = new ArrayList<>();

@@ -4,8 +4,13 @@ import com.chrisdmilner.progressbar.ProgressBar;
 import com.chrisdmilner.progressbar.style.ProgressBarStyle;
 import com.chrisdmilner.progressbar.style.ProgressBarStyleBuilder;
 
-public class ManualIterationWithStyle {
+public class ManualIterationWithStyle implements Runnable {
     public static void main(String[] args) {
+        new ManualIterationWithStyle().run();
+    }
+
+    @Override
+    public void run() {
         int its = 500000000;
 
         ProgressBarStyle style = new ProgressBarStyleBuilder()
