@@ -1,9 +1,6 @@
 package com.chrisdmilner.progressbar;
 
-import com.chrisdmilner.progressbar.examples.AutomaticIteration;
-import com.chrisdmilner.progressbar.examples.AutomaticIterationWithStyle;
-import com.chrisdmilner.progressbar.examples.ManualIteration;
-import com.chrisdmilner.progressbar.examples.ManualIterationWithStyle;
+import com.chrisdmilner.progressbar.examples.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -24,6 +21,7 @@ class NormalUsageTests {
                 Arguments.of(new ManualIteration()),
                 Arguments.of(new ManualIterationWithStyle()),
                 Arguments.of(new AutomaticIteration()),
-                Arguments.of(new AutomaticIterationWithStyle()));
+                Arguments.of(new AutomaticIterationWithStyle()),
+                Arguments.of(new ComplexStepping()));
     }
 }

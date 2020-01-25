@@ -80,7 +80,7 @@ public class ProgressBar {
     }
 
     private void validate() {
-        Preconditions.checkState(totalIterations <= 0, "Invalid number of total iterations");
+        Preconditions.checkState(totalIterations > 0, "Invalid number of total iterations");
     }
 
     private void printProgressBar() {
