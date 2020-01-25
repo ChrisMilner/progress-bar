@@ -2,6 +2,7 @@ package com.chrisdmilner.progressbar;
 
 import com.chrisdmilner.progressbar.style.ProgressBarStyle;
 import com.chrisdmilner.progressbar.style.ProgressBarStyleFactory;
+import com.google.common.base.Preconditions;
 
 public class ProgressBar {
     private final int totalIterations;
@@ -43,6 +44,33 @@ public class ProgressBar {
         validate();
 
         currentStep++;
+        updateBarIfNecessary();
+    }
+
+    public void stepTo(int step) {
+        validate();
+        Preconditions.checkState(step >= 0, "Step must be greater than zero");
+
+        currentStep = step;
+        updateBarIfNecessary();
+    }
+
+    public void stepToProportion(double proportion) {
+        validate();
+        Preconditions.checkState(proportion >= 0 && proportion <= 1, "Proportion must be between 0 and 1");
+
+        currentStep = (int) (proportion * totalIterations);
+        updateBarIfNecessary();
+    }
+
+    public void done() {
+        validate();
+
+        currentStep = totalIterations;
+        updateBarIfNecessary();
+    }
+
+    private void updateBarIfNecessary() {
         int next_progress = (int) (currentStep / (totalIterations / (float) style.width));
 
         if (next_progress > progress || currentStep == totalIterations) {
@@ -52,9 +80,7 @@ public class ProgressBar {
     }
 
     private void validate() {
-        if (totalIterations <= 0) {
-            throw new IllegalStateException("Invalid number of total iterations defined");
-        }
+        Preconditions.checkState(totalIterations <= 0, "Invalid number of total iterations");
     }
 
     private void printProgressBar() {
