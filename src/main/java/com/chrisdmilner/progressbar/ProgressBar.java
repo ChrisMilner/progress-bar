@@ -10,6 +10,14 @@ public class ProgressBar {
 
     private int currentStep;
 
+    public static <K> ProgressBarIterable<K> iterate(Iterable<K> iterable, ProgressBarStyle style) {
+        return new ProgressBarIterable<>(iterable, style);
+    }
+
+    public static <K> ProgressBarIterable<K> iterate(Iterable<K> iterable) {
+        return new ProgressBarIterable<>(iterable, ProgressBarStyleFactory.getDefaultStyle());
+    }
+
     public ProgressBar(int totalSteps, ProgressBarStyle style) {
         Preconditions.checkState(totalSteps > 0,  "Invalid number of total iterations");
 
@@ -19,14 +27,6 @@ public class ProgressBar {
 
     public ProgressBar(int totalSteps) {
         this(totalSteps, ProgressBarStyleFactory.getDefaultStyle());
-    }
-
-    public static <K> ProgressBarIterable<K> iterate(Iterable<K> iterable, ProgressBarStyle style) {
-        return new ProgressBarIterable<>(iterable, style);
-    }
-
-    public static <K> ProgressBarIterable<K> iterate(Iterable<K> iterable) {
-        return new ProgressBarIterable<>(iterable, ProgressBarStyleFactory.getDefaultStyle());
     }
 
     int getCurrentStep() {
