@@ -60,12 +60,16 @@ public class ProgressBarStyle {
                 }
             }
             System.out.print(end);
-            System.out.print("\r");
+
+            if (proportion >= 1) {
+                System.out.println(" " + doneMessage);
+            } else {
+                System.out.print("\r");
+            }
         }
     }
 
     public void finish() {
         update(1);
-        System.out.print(" " + doneMessage + "\n");
     }
 }

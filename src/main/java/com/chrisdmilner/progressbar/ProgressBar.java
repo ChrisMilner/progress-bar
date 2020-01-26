@@ -38,7 +38,7 @@ public class ProgressBar {
         validate();
 
         currentStep++;
-        style.update(currentStep / (double) totalSteps);
+        updateBar();
     }
 
     public void stepTo(int step) {
@@ -46,7 +46,7 @@ public class ProgressBar {
         Preconditions.checkState(step >= 0, "Step must be greater than zero");
 
         currentStep = step;
-        style.update(currentStep / (double) totalSteps);
+        updateBar();
     }
 
     public void stepToProportion(double proportion) {
@@ -54,7 +54,7 @@ public class ProgressBar {
         Preconditions.checkState(proportion >= 0 && proportion <= 1, "Proportion must be between 0 and 1");
 
         currentStep = (int) (proportion * totalSteps);
-        style.update(proportion);
+        updateBar();
     }
 
     public void done() {
@@ -62,6 +62,14 @@ public class ProgressBar {
 
         currentStep = totalSteps;
         style.finish();
+    }
+
+    private void updateBar() {
+        if (currentStep >= totalSteps) {
+            style.finish();
+        } else {
+            style.update(currentStep / (double) totalSteps);
+        }
     }
 
     private void validate() {
