@@ -15,7 +15,7 @@ public class ProgressBar {
     }
 
     public static <K> ProgressBarIterable<K> iterate(Iterable<K> iterable) {
-        return new ProgressBarIterable<>(iterable, ProgressBarStyleFactory.getDefaultStyle());
+        return new ProgressBarIterable<>(iterable);
     }
 
     public ProgressBar(int totalSteps, ProgressBarStyle style) {
