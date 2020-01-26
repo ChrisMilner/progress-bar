@@ -1,3 +1,3 @@
 # Progress Bar
 
-![Tests](https://github.com/ChrisMilner/progress-bar/workflows/Tests/badge.svg)
+![Build](https://travis-ci.com/ChrisMilner/progress-bar.svg?branch=master)
