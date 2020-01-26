@@ -1,9 +1,1 @@
 language: java
-
-jobs:
-  include:
-    - stage: test
-    - script: "mvn test"
-    - stage: dependency-check
-    - script: "mvn org.owasp:dependency-check-maven:check -DfailBuildOnAnyVulnerability=true"
-  
