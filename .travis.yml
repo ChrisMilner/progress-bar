@@ -1,2 +1,6 @@
   language: java
+
+  check-dependencies:
+    provider: script
+    script: "mvn org.owasp:dependency-check-maven:check -DfailBuildOnAnyVulnerability=true"
   
