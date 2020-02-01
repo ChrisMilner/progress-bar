@@ -1,6 +1,6 @@
 package com.chrisdmilner.progressbar.style;
 
-public class ProgressBarStyle {
+public class ProgressBarRenderer {
     private final int width;
     private final String title;
     private final String label;
@@ -13,7 +13,7 @@ public class ProgressBarStyle {
 
     private int progress;
 
-    ProgressBarStyle(
+    ProgressBarRenderer(
             int width,
             String title,
             String label,

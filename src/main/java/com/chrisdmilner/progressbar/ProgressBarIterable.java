@@ -1,24 +1,23 @@
 package com.chrisdmilner.progressbar;
 
-import java.util.Iterator;
+import com.chrisdmilner.progressbar.style.ProgressBarRenderer;
+import com.chrisdmilner.progressbar.style.ProgressBarRendererFactory;
+import com.google.common.collect.Iterators;
 
 import javax.annotation.Nonnull;
-
-import com.chrisdmilner.progressbar.style.ProgressBarStyle;
-import com.chrisdmilner.progressbar.style.ProgressBarStyleFactory;
-import com.google.common.collect.Iterators;
+import java.util.Iterator;
 
 public class ProgressBarIterable<K> implements Iterable<K> {
     private final Iterable<K> iterable;
-    private final ProgressBarStyle style;
+    private final ProgressBarRenderer style;
 
-    ProgressBarIterable(Iterable<K> iterable, ProgressBarStyle style) {
+    ProgressBarIterable(Iterable<K> iterable, ProgressBarRenderer style) {
         this.iterable = iterable;
         this.style = style;
     }
 
-    public ProgressBarIterable(Iterable<K> iterable) {
-        this(iterable, ProgressBarStyleFactory.getDefaultStyle());
+    ProgressBarIterable(Iterable<K> iterable) {
+        this(iterable, ProgressBarRendererFactory.getDefaultStyle());
     }
 
     @Override
@@ -32,7 +31,7 @@ public class ProgressBarIterable<K> implements Iterable<K> {
         private final Iterator<K> iterator;
         private final ProgressBar bar;
 
-        ProgressBarIterator(Iterator<K> iterator, int size, ProgressBarStyle style) {
+        ProgressBarIterator(Iterator<K> iterator, int size, ProgressBarRenderer style) {
             this.iterator = iterator;
             this.bar = new ProgressBar(size, style);
             this.bar.start();

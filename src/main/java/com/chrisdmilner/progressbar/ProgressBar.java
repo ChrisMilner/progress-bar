@@ -1,16 +1,16 @@
 package com.chrisdmilner.progressbar;
 
-import com.chrisdmilner.progressbar.style.ProgressBarStyle;
-import com.chrisdmilner.progressbar.style.ProgressBarStyleFactory;
+import com.chrisdmilner.progressbar.style.ProgressBarRenderer;
+import com.chrisdmilner.progressbar.style.ProgressBarRendererFactory;
 import com.google.common.base.Preconditions;
 
 public class ProgressBar {
     private final int totalSteps;
-    private final ProgressBarStyle style;
+    private final ProgressBarRenderer style;
 
     private int currentStep;
 
-    public static <K> ProgressBarIterable<K> iterate(Iterable<K> iterable, ProgressBarStyle style) {
+    public static <K> ProgressBarIterable<K> iterate(Iterable<K> iterable, ProgressBarRenderer style) {
         return new ProgressBarIterable<>(iterable, style);
     }
 
@@ -18,7 +18,7 @@ public class ProgressBar {
         return new ProgressBarIterable<>(iterable);
     }
 
-    public ProgressBar(int totalSteps, ProgressBarStyle style) {
+    public ProgressBar(int totalSteps, ProgressBarRenderer style) {
         Preconditions.checkState(totalSteps > 0,  "Invalid number of total iterations");
 
         this.totalSteps = totalSteps;
@@ -26,7 +26,7 @@ public class ProgressBar {
     }
 
     public ProgressBar(int totalSteps) {
-        this(totalSteps, ProgressBarStyleFactory.getDefaultStyle());
+        this(totalSteps, ProgressBarRendererFactory.getDefaultStyle());
     }
 
     int getCurrentStep() {

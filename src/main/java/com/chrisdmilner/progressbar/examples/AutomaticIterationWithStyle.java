@@ -1,8 +1,8 @@
 package com.chrisdmilner.progressbar.examples;
 
 import com.chrisdmilner.progressbar.ProgressBar;
-import com.chrisdmilner.progressbar.style.ProgressBarStyle;
-import com.chrisdmilner.progressbar.style.ProgressBarStyleBuilder;
+import com.chrisdmilner.progressbar.style.ProgressBarRenderer;
+import com.chrisdmilner.progressbar.style.ProgressBarRendererBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +20,7 @@ public class AutomaticIterationWithStyle implements Runnable {
         List<Integer> data = Stream.generate(() -> 1).limit(its).collect(Collectors.toList());
         List<Integer> results = new ArrayList<>();
 
-        ProgressBarStyle style = new ProgressBarStyleBuilder()
+        ProgressBarRenderer style = new ProgressBarRendererBuilder()
                 .withWidth(30)
                 .withLabel("Praising the sun:")
                 .withStart("---===<<<")
