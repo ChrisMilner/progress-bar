@@ -11,7 +11,7 @@ public class ManualIterationWithStyle implements Runnable {
 
     @Override
     public void run() {
-        int its = 500000000;
+        int its = 20;
 
         ProgressBarRenderer style = new ProgressBarRendererBuilder()
                 .withWidth(50)
@@ -28,6 +28,7 @@ public class ManualIterationWithStyle implements Runnable {
 
         bar.start();
         for (int i = 0; i < its; i++) {
+            ExampleUtils.pause(0.1);
             bar.step();
         }
     }

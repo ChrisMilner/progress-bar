@@ -9,11 +9,12 @@ public class ManualIteration implements Runnable {
 
     @Override
     public void run() {
-        int its = 500000000;
+        int its = 20;
         ProgressBar bar = new ProgressBar(its);
 
         bar.start();
         for (int i = 0; i < its; i++) {
+            ExampleUtils.pause(0.1);
             bar.step();
         }
     }

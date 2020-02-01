@@ -9,11 +9,12 @@ public class ComplexStepping implements Runnable {
 
     @Override
     public void run() {
-        int its = 2000000000;
+        int its = 20;
         ProgressBar bar = new ProgressBar(its);
 
         bar.start();
         for (int i = 0; i < its / 2; i++) {
+            ExampleUtils.pause(0.1);
             if (i == its / 4) {
                 bar.stepToProportion(0.5);
                 break;
@@ -22,6 +23,7 @@ public class ComplexStepping implements Runnable {
         }
 
         for (int i = 0; i < its / 2; i++) {
+            ExampleUtils.pause(0.1);
             if (i == its / 4) {
                 bar.done();
                 break;
